@@ -1,42 +1,553 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Your Name - Portfolio</title>
-    <meta charset="UTF-8">
-    <style>
-        body {
-            font-family: Arial;
-            margin: 40px;
-            background: #f4f4f4;
-        }
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Alex Rivera | Modern Portfolio & Creative Hub</title>
+  <!-- Google Fonts: modern sans-serif & display -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fafcff;
+      font-family: 'Inter', sans-serif;
+      color: #121826;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* modern gradient accents & glassmorphism */
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --secondary: #8b5cf6;
+      --accent: #06b6d4;
+      --dark-bg: #0f172a;
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --glass-border: rgba(255, 255, 255, 0.3);
+      --shadow-sm: 0 8px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.05);
+      --shadow-md: 0 12px 28px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.02);
+      --shadow-lg: 0 25px 40px -12px rgba(0,0,0,0.15);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* header / nav */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1e293b;
+      transition: 0.2s ease;
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* hero section */
+    .hero {
+      padding: 5rem 0 3rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .hero-content {
+      flex: 1.2;
+    }
+
+    .hero-badge {
+      background: #eef2ff;
+      color: var(--primary-dark);
+      display: inline-block;
+      padding: 0.25rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(2px);
+    }
+
+    .hero h1 {
+      font-size: 3.8rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      background: linear-gradient(to right, #0f172a, #334155);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-highlight {
+      color: var(--primary);
+      background: none;
+      background-clip: unset;
+      -webkit-background-clip: unset;
+      color: var(--primary);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #334155;
+      max-width: 550px;
+      margin-bottom: 2rem;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 8px rgba(59,130,246,0.2);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -5px rgba(59,130,246,0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #cbd5e1;
+      padding: 0.8rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #1e293b;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(59,130,246,0.05);
+    }
+
+    .hero-visual {
+      flex: 0.9;
+      background: linear-gradient(145deg, #e6f0ff, #ffffff);
+      border-radius: 2rem;
+      padding: 1.2rem;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(2px);
+    }
+
+    .avatar-icon {
+      font-size: 7rem;
+      color: var(--primary);
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.1));
+    }
+
+    /* section styles */
+    section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: #475569;
+      max-width: 700px;
+      margin: 0 auto 3rem auto;
+      font-size: 1.1rem;
+    }
+
+    /* skills / tech grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1rem;
+    }
+
+    .skill-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(4px);
+      background: rgba(255,255,255,0.75);
+      border-radius: 1.5rem;
+      padding: 1.2rem 0.5rem;
+      text-align: center;
+      transition: all 0.25s;
+      border: 1px solid #eef2ff;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .skill-card i {
+      font-size: 2.3rem;
+      color: var(--primary);
+      margin-bottom: 0.7rem;
+    }
+
+    .skill-card span {
+      display: block;
+      font-weight: 600;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* projects cards */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 1.8rem;
+      overflow: hidden;
+      transition: 0.25s ease;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #edf2f7;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: #cbdffc;
+    }
+
+    .project-img {
+      height: 180px;
+      background: linear-gradient(130deg, #d9e6ff, #f0f4ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: var(--primary-dark);
+    }
+
+    .project-info {
+      padding: 1.6rem;
+    }
+
+    .project-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 0.8rem 0;
+    }
+
+    .project-tags span {
+      background: #f1f5f9;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      font-weight: 500;
+    }
+
+    /* about & contact */
+    .about-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      align-items: center;
+      background: #ffffffdd;
+      backdrop-filter: blur(2px);
+      border-radius: 2rem;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(59,130,246,0.1);
+    }
+
+    .about-text {
+      flex: 2;
+    }
+
+    .about-text p {
+      margin-bottom: 1.2rem;
+      color: #1e293b;
+    }
+
+    .contact-links {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: #f8fafc;
+      padding: 0.8rem 1.2rem;
+      border-radius: 2rem;
+      transition: 0.2s;
+      text-decoration: none;
+      color: #0f172a;
+      font-weight: 500;
+    }
+
+    .contact-item i {
+      font-size: 1.3rem;
+      width: 28px;
+      color: var(--primary);
+    }
+
+    .contact-item:hover {
+      background: #eef2ff;
+      transform: scale(1.02);
+    }
+
+    /* footer */
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      border-top: 1px solid #e2e8f0;
+      margin-top: 2rem;
+      color: #475569;
+    }
+
+    /* responsive */
+    @media (max-width: 800px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .navbar {
+        flex-direction: column;
+      }
+      .container {
+        padding: 0 1.5rem;
+      }
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .btn-group {
+        justify-content: center;
+      }
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .about-wrap {
+        flex-direction: column;
+      }
+    }
+
+    /* custom glows */
+    .glow-text {
+      text-shadow: 0 0 2px rgba(59,130,246,0.3);
+    }
+  </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1>Your Name</h1>
-        <p>Telecom Engineer | VAS | Spring Boot | AI</p>
+<main>
+  <div class="container">
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="logo">✦ alex.dev</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#skills">Stack</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Connect</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section (home) -->
+    <div id="home" class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-bolt" style="margin-right: 6px;"></i> product engineer & creator
+        </div>
+        <h1>
+          crafting digital <span class="hero-highlight">experiences</span> <br> with modern edge
+        </h1>
+        <p>Hi, I'm Alex Rivera — I build fast, accessible, and future‑ready web applications. Let’s turn ideas into reality.</p>
+        <div class="btn-group">
+          <a href="#work" class="btn-primary"><i class="fas fa-arrow-down"></i> View projects</a>
+          <a href="#contact" class="btn-outline"><i class="fas fa-paper-plane"></i> Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <i class="fas fa-laptop-code avatar-icon"></i>
+        <p style="margin-top: 0.5rem; font-weight: 500;">✨ full-stack · AI · design systems</p>
+      </div>
     </div>
 
-    <div class="card">
-        <h2>Projects</h2>
-        <ul>
-            <li>SMS Platform (500M msgs/month)</li>
-            <li>USSD Engine</li>
-            <li>AI Chat SMS</li>
-        </ul>
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2 class="section-title">tech stack & tools</h2>
+      <div class="section-sub">constantly learning — currently exploring edge compute & AI agents</div>
+      <div class="skills-grid">
+        <div class="skill-card"><i class="fab fa-react"></i><span>React</span></div>
+        <div class="skill-card"><i class="fab fa-js"></i><span>TypeScript</span></div>
+        <div class="skill-card"><i class="fab fa-node-js"></i><span>Node.js</span></div>
+        <div class="skill-card"><i class="fab fa-python"></i><span>Python</span></div>
+        <div class="skill-card"><i class="fas fa-cloud"></i><span>Cloud (AWS)</span></div>
+        <div class="skill-card"><i class="fas fa-database"></i><span>Postgres</span></div>
+        <div class="skill-card"><i class="fab fa-figma"></i><span>Figma</span></div>
+        <div class="skill-card"><i class="fab fa-github"></i><span>GitHub Actions</span></div>
+      </div>
+    </section>
+
+    <!-- Projects / Work section -->
+    <section id="work">
+      <h2 class="section-title">featured projects</h2>
+      <div class="section-sub">real‑world impact, elegant solutions</div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-img"><i class="fas fa-chart-line"></i></div>
+          <div class="project-info">
+            <h3>Analytics Flow</h3>
+            <p>Real-time dashboard with live data streaming, WebSockets, and D3 visualizations. Serves 10k+ events daily.</p>
+            <div class="project-tags"><span>React</span><span>Express</span><span>Socket.io</span></div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img"><i class="fas fa-brain"></i></div>
+          <div class="project-info">
+            <h3>GenAI Studio</h3>
+            <p>LLM playground with prompt chaining & vector search. Built with Next.js, LangChain, and Pinecone.</p>
+            <div class="project-tags"><span>Next.js</span><span>OpenAI</span><span>Tailwind</span></div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-img"><i class="fas fa-store"></i></div>
+          <div class="project-info">
+            <h3>Urban Nest</h3>
+            <p>E‑commerce platform with dynamic cart, auth, and Stripe integration. Fully responsive, PWA ready.</p>
+            <div class="project-tags"><span>Vue</span><span>Node</span><span>MongoDB</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About + contact combined section -->
+    <section id="about">
+      <div class="about-wrap">
+        <div class="about-text">
+          <h2 style="font-size: 1.9rem; margin-bottom: 0.8rem;">⚡ about me</h2>
+          <p>I’m a creative developer with 7+ years of shaping digital products for startups and global brands. I thrive at the intersection of design and engineering — turning complex problems into smooth, human‑centered interfaces.</p>
+          <p>Outside coding, I contribute to OSS, write about frontend architecture, and mentor junior devs. Let's build something meaningful.</p>
+          <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+            <span><i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> SF / remote</span>
+            <span><i class="fas fa-coffee"></i> open for collab</span>
+          </div>
+        </div>
+        <div id="contact" class="contact-links">
+          <a href="#" class="contact-item"><i class="fab fa-github"></i> github / alexrivera</a>
+          <a href="#" class="contact-item"><i class="fab fa-linkedin"></i> linkedin / in/alexrivera</a>
+          <a href="#" class="contact-item"><i class="fab fa-twitter"></i> twitter / @alexmakes</a>
+          <a href="#" class="contact-item"><i class="fas fa-envelope"></i> alex.rivera@creativ.dev</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- fun fact + modern callout -->
+    <div style="text-align: center; margin: 2rem 0 0.5rem;">
+      <div style="background: linear-gradient(120deg, #eef2ff, white); border-radius: 3rem; padding: 1.2rem 2rem; display: inline-block;">
+        <i class="fas fa-terminal" style="color: var(--primary); margin-right: 10px;"></i> 
+        <span style="font-weight: 500;">“Design is not just what it looks like — it’s how it works.”</span>
+      </div>
     </div>
 
-    <div class="card">
-        <h2>Links</h2>
-        <a href="https://github.com/yourusername">GitHub</a>
-    </div>
+    <footer>
+      <p>© 2025 Alex Rivera — Built with <i class="fas fa-heart" style="color: #ef4444;"></i> for GitHub Pages</p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem;"><i class="fas fa-sync-alt"></i> modern stack · fully responsive · glassmorphism vibes</p>
+    </footer>
+  </div>
+</main>
 
+<!-- tiny interactive effect: console greeting (optional) -->
+<script>
+  (function() {
+    console.log("%c✨ Modern Portfolio | Built for GitHub Pages ✨", "color: #3b82f6; font-size: 16px; font-weight: bold;");
+    console.log("Check out the projects section — interactive, fresh design.");
+    // optional smooth anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if(targetId === "#" || targetId === "") return;
+        const targetElem = document.querySelector(targetId);
+        if(targetElem) {
+          e.preventDefault();
+          targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+</script>
 </body>
 </html>
